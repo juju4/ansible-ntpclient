@@ -1,0 +1,12 @@
+---
+
+## no openntpd
+- name: yum | Install ntp server
+  yum: name=ntp state=present
+
+- name: configure ntp server
+  template: src=ntp.conf dest=/etc/ntp.conf mode=0644 backup=yes
+
+- name: enable and start ntp service
+  service: name=ntpd state=started enabled=yes
+

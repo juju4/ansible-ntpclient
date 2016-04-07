@@ -1,0 +1,15 @@
+
+## if not defined, will not listen
+#ntpclient_listen: *
+#ntpclient_listen: 127.0.0.1
+## On Centos, it's recommended to enable at least those
+#ntpclient_listen: [ 127.0.0.1, ::1 ]
+
+## http://twiki.ntp.org/bin/view/Servers/NTPPoolServers
+ntpclient_servers:
+    - pool.ntp.org
+#    - 0.debian.pool.ntp.org
+#    - 1.debian.pool.ntp.org
+#    - 2.debian.pool.ntp.org
+#    - 3.debian.pool.ntp.org
+#    - 0.centos.pool.ntp.org
