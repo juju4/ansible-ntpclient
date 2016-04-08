@@ -65,6 +65,8 @@ $ vagrant ssh
 
 ## Troubleshooting & Known issues
 
+* travis: idempotence fails on centos6 only for unknown reason
+(task: enable and start ntp service)
 
 ## License
 
