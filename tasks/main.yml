@@ -1,8 +1,12 @@
 ---
 
-- include: debian.yml
-  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+- block:
+    - include: debian.yml
+      when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+    - include: redhat.yml
+      when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: (ansible_virtualization_type is not defined or (ansible_virtualization_type != "lxc" and ansible_virtualization_type != "docker"))
 
-- include: redhat.yml
-  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+- debug: msg="Not installing ntpclient as setup is a container (adjtime not permitted)"
+  when: (ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker"))
 

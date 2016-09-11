@@ -67,6 +67,9 @@ $ vagrant ssh
 
 * travis: idempotence fails on centos6 only for unknown reason
 (task: enable and start ntp service)
+* role will not execute inside lxc as kernel is shared and ntp adjtime is not permitted
+http://blog.oddbit.com/2015/10/09/running-ntp-in-a-container/
+
 
 ## License
 
