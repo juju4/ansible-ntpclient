@@ -22,7 +22,7 @@ provisioner:
 
 platforms:
 ## Not installing ntpclient as setup is a container (adjtime not permitted)
-#  - name: ubuntu-16.04
+  - name: ubuntu-16.04
 #  - name: ubuntu-14.04
 #  - name: ubuntu-12.04
 #  - name: centos-7
