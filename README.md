@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-ntpclient.svg?branch=master)](https://travis-ci.org/juju4/ansible-ntpclient)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-ntpclient.svg?branch=master)](https://travis-ci.org/juju4/ansible-ntpclient)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-ntpclient.svg?branch=devel)](https://travis-ci.org/juju4/ansible-ntpclient/branches)
 # NTP Client ansible role
 
 A simple ansible role to setup system with ntp synchronzation
@@ -9,6 +10,7 @@ A simple ansible role to setup system with ntp synchronzation
 It was tested on the following versions:
  * 1.9
  * 2.0
+ * 2.2
 
 ### Operating systems
 
@@ -22,7 +24,7 @@ For example
 ```
 - host: all
   roles:
-    - ntpclient
+    - juju4.ntpclient
 ```
 
 It will setup debian-based system with openntpd and redhat-based system with ntpd.
@@ -49,16 +51,17 @@ ntpclient_servers:
 ## Continuous integration
 
 This role has a travis basic test (for github), more advanced with kitchen and also a Vagrantfile (test/vagrant).
+BUT it will NOT work in containers as adjtime needs priviliged (kernel) access which is not available in default configuration.
 
 Once you ensured all necessary roles are present, You can test with:
 ```
-$ cd /path/to/roles/ntpclient
+$ cd /path/to/roles/juju4.ntpclient
 $ kitchen verify
 $ kitchen login
 ```
 or
 ```
-$ cd /path/to/roles/ntpclient/test/vagrant
+$ cd /path/to/roles/juju4.ntpclient/test/vagrant
 $ vagrant up
 $ vagrant ssh
 ```
