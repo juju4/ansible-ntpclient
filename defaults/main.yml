@@ -5,9 +5,17 @@
 ## On Centos, it's recommended to enable at least those
 #ntpclient_listen: [ 127.0.0.1, ::1 ]
 
+# https://access.redhat.com/solutions/58025
+# https://insights.sei.cmu.edu/sei_blog/2017/04/best-practices-for-ntp-services.html
 ## http://twiki.ntp.org/bin/view/Servers/NTPPoolServers
 ntpclient_servers:
     - pool.ntp.org
+    - 0.north-america.ntp.org
+    - 1.north-america.ntp.org
+    - 0.europe.pool.ntp.org
+    - 1.europe.pool.ntp.org
+    - 0.asia.pool.ntp.org
+    - 1.asia.pool.ntp.org
 #    - 0.debian.pool.ntp.org
 #    - 1.debian.pool.ntp.org
 #    - 2.debian.pool.ntp.org
