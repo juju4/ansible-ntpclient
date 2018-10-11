@@ -14,7 +14,7 @@
     line: "{{ item.l }}"
     backup: yes
   with_items:
-    - { re: '^OPTIONS=.*', l: 'OPTIONS=\'{{ ntpclient_opts | default('-g') }}\'' }
+    - { re: '^OPTIONS=.*', l: "OPTIONS='{{ ntpclient_opts | default('-g') }}'" }
 
 - name: enable and start ntp service
   service: name=ntpd state=started enabled=yes
