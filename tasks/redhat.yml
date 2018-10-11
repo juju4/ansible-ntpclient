@@ -7,6 +7,15 @@
 - name: configure ntp server
   template: src=ntp.conf dest=/etc/ntp.conf mode=0644 backup=yes
 
+- name: configure ntp daemon settings
+  lineinfile:
+    dest: /etc/sysconfig/ntpd
+    regexp: "{{ item.re }}"
+    line: "{{ item.l }}"
+    backup: yes
+  with_items:
+    - { re: '^OPTIONS=.*', l: 'OPTIONS=\'{{ ntpclient_opts | default('-g') }}\'' }
+
 - name: enable and start ntp service
   service: name=ntpd state=started enabled=yes
 

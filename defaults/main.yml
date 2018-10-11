@@ -21,3 +21,7 @@ ntpclient_servers:
 #    - 2.debian.pool.ntp.org
 #    - 3.debian.pool.ntp.org
 #    - 0.centos.pool.ntp.org
+
+# ntpd only: user option (-u ntp:ntp) is by default on centos7 (systemd config) and ubuntu 18.04 (ntp-systemd-wrapper) and independent of this setting
+#ntpclient_opts: -g
+ntpclient_opts: -g -i /var/lib/ntp
