@@ -4,5 +4,11 @@
   apt: name=openntpd state=present
 
 - name: configure openntpd
-  template: src=ntpd.conf dest=/etc/openntpd/ntpd.conf mode=0644 backup=yes
-
+  template:
+    src: ntpd.conf
+    dest: /etc/openntpd/ntpd.conf
+    mode: '0644'
+    backup: yes
+    validate: 'openntpd -f %s -n'
+  notify:
+    - restart openntpd

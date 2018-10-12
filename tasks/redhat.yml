@@ -5,7 +5,13 @@
   yum: name=ntp state=present
 
 - name: configure ntp server
-  template: src=ntp.conf dest=/etc/ntp.conf mode=0644 backup=yes
+  template:
+    src: ntp.conf
+    dest: /etc/ntp.conf
+    mode: '0644'
+    backup: yes
+  notify:
+    - restart ntp
 
 - name: configure ntp daemon settings
   lineinfile:
@@ -15,7 +21,9 @@
     backup: yes
   with_items:
     - { re: '^OPTIONS=.*', l: "OPTIONS='{{ ntpclient_opts | default('-g') }}'" }
+  notify:
+    - restart ntp
 
 - name: enable and start ntp service
-  service: name=ntpd state=started enabled=yes
+  service: name=ntp state=started enabled=yes
 
