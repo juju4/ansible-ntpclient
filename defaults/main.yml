@@ -10,8 +10,8 @@
 ## http://twiki.ntp.org/bin/view/Servers/NTPPoolServers
 ntpclient_servers:
     - pool.ntp.org
-    - 0.north-america.ntp.org
-    - 1.north-america.ntp.org
+    - 0.north-america.pool.ntp.org
+    - 1.north-america.pool.ntp.org
     - 0.europe.pool.ntp.org
     - 1.europe.pool.ntp.org
     - 0.asia.pool.ntp.org
