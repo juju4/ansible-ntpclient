@@ -25,6 +25,6 @@
     - restart ntp
 
 - name: enable and start ntp service
-  service: name=ntp state=started enabled=yes
+  service: name=ntpd state=started enabled=yes
   when: not (ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker"))
 
