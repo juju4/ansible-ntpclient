@@ -1,3 +1,4 @@
+---
 
 ## if not defined, will not listen
 #ntpclient_listen: *

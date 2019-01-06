@@ -3,6 +3,8 @@
 ## no openntpd
 - name: yum | Install ntp server
   yum: name=ntp state=present
+  register: pkg_result
+  until: pkg_result is success
 
 - name: configure ntp server
   template:

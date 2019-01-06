@@ -2,6 +2,8 @@
 
 - name: apt | openntpd install
   apt: name=openntpd state=present
+  register: pkg_result
+  until: pkg_result is success
 
 - name: configure openntpd
   template:
