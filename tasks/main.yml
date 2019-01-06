@@ -6,5 +6,7 @@
   when: ansible_os_family == "RedHat"
 
 - debug: msg="Warning! ntpclient in a container will not work/execute (adjtime not permitted)"
-  when: (ansible_virtualization_type is defined and (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker"))
-
+  when: >
+    (ansible_virtualization_type is defined and
+      (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
+    )
