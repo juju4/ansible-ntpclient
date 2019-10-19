@@ -1,3 +1,8 @@
 ---
 
 driftfile: /var/ntp/drift/ntp.drift
+
+ntp_packages:
+  - ntp
+
+ntp_svc: ntpd

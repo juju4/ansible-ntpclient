@@ -1,0 +1,8 @@
+---
+
+driftfile: /var/lib/chrony/drift
+
+ntp_packages:
+  - chrony
+
+ntp_svc: chronyd
