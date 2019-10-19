@@ -80,12 +80,15 @@ after_script:
   - '[ "X${distribution}" == "Xubuntu" ] && sudo docker exec "$(cat ${container_id})" dpkg -i inspec_2.3.4-1_amd64.deb || true'
   - '[ "X${distribution}" == "Xcentos" ] && sudo docker exec "$(cat ${container_id})" rpm -Uvh https://packages.chef.io/files/stable/inspec/2.3.4/el/7/inspec-2.3.4-1.el7.x86_64.rpm || true'
   - 'sudo docker exec "$(cat ${container_id})" /opt/inspec/bin/inspec exec https://github.com/juju4/inspec-ntp/archive/master.tar.gz --attrs /etc/ansible/roles/juju4.ntpclient/test/integration/default/inspec/profile-attributes-${distribution}.yml'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/ntp.conf'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/chrony.conf'
 # ubuntu openntpd
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl -l --no-pager status openntpd'
 # ubuntu ntp
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl -l --no-pager status ntp'
 # redhat ntp
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl -l --no-pager status ntpd'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm systemctl -l --no-pager status chronyd'
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
 
