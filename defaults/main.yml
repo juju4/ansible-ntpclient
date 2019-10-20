@@ -2,9 +2,9 @@
 
 ## if not defined, will not listen
 #ntpclient_listen: *
-#ntpclient_listen: 127.0.0.1
+#ntpclient_listen: '127.0.0.1'
 ## On Centos, it's recommended to enable at least those
-#ntpclient_listen: [ 127.0.0.1, ::1 ]
+#ntpclient_listen: [ '127.0.0.1', '::1' ]
 
 # https://access.redhat.com/solutions/58025
 # https://insights.sei.cmu.edu/sei_blog/2017/04/best-practices-for-ntp-services.html
