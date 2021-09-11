@@ -1,10 +1,10 @@
 ---
 
 ## if not defined, will not listen
-#ntpclient_listen: *
-#ntpclient_listen: '127.0.0.1'
+# ntpclient_listen: *
+# ntpclient_listen: '127.0.0.1'
 ## On Centos, it's recommended to enable at least those
-#ntpclient_listen: [ '127.0.0.1', '::1' ]
+# ntpclient_listen: [ '127.0.0.1', '::1' ]
 
 # https://access.redhat.com/solutions/58025
 # https://insights.sei.cmu.edu/sei_blog/2017/04/best-practices-for-ntp-services.html
@@ -25,5 +25,5 @@ ntpclient_servers:
 
 # ntpd only: user option (-u ntp:ntp) is by default on centos7 (systemd config) and
 #       ubuntu 18.04 (ntp-systemd-wrapper) and independent of this setting
-#ntpclient_opts: -g
+# ntpclient_opts: -g
 ntpclient_opts: -g -i /var/lib/ntp
