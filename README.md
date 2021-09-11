@@ -1,5 +1,3 @@
-[![Build Status - Master](https://travis-ci.org/juju4/ansible-ntpclient.svg?branch=master)](https://travis-ci.org/juju4/ansible-ntpclient)
-[![Build Status - Devel](https://travis-ci.org/juju4/ansible-ntpclient.svg?branch=devel)](https://travis-ci.org/juju4/ansible-ntpclient/branches)
 # NTP Client ansible role
 
 A simple ansible role to setup system with ntp synchronzation
