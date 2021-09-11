@@ -76,4 +76,3 @@ http://blog.oddbit.com/2015/10/09/running-ntp-in-a-container/
 ## License
 
 BSD 2-clause
-

@@ -46,4 +46,3 @@ describe file('/var/log/messages'), :if => os[:family] == 'redhat' do
 ## Note: might not appear fast enough after starting
 #  its(:content) { should match /adjusting local clock by 0./ }
 end
-
