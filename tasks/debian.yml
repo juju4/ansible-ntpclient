@@ -11,6 +11,6 @@
     dest: /etc/openntpd/ntpd.conf
     mode: '0644'
     backup: yes
-    validate: 'openntpd -f %s -n'
+    # validate: 'openntpd -f %s -n'
   notify:
     - restart openntpd
