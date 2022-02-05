@@ -5,6 +5,16 @@
   register: pkg_result
   until: pkg_result is success
 
+- name: configure openntpd defaults
+  replace:
+    dest: /etc/defaults/openntpd
+    regexp: '^DAEMON_OPTS="(.*)"'
+    replace: 'DAEMON_OPTS="-f /etc/openntpd/ntpd.conf {{ ntpclient_openntpd_opts }}"'
+    mode: '0644'
+    backup: yes
+  notify:
+    - restart openntpd
+
 - name: configure openntpd
   template:
     src: ntpd.conf

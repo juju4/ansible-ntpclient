@@ -27,3 +27,7 @@ ntpclient_servers:
 #       ubuntu 18.04 (ntp-systemd-wrapper) and independent of this setting
 # ntpclient_opts: -g
 ntpclient_opts: -g -i /var/lib/ntp
+
+# for openntpd
+ntpclient_openntpd_opts: ''
+# ntpclient_openntpd_opts: '-s'
