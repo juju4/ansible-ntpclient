@@ -1,7 +1,7 @@
 ---
 
 - name: restart openntpd
-  service:
+  ansible.builtin.service:
     name: openntpd
     state: restarted
   when: >
@@ -10,7 +10,7 @@
         )
 
 - name: restart ntp
-  service:
+  ansible.builtin.service:
     name: ntpd
     state: restarted
   when: >
@@ -19,7 +19,7 @@
         )
 
 - name: restart chronyd
-  service:
+  ansible.builtin.service:
     name: chronyd
     state: restarted
   when: >

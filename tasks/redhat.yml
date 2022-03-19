@@ -1,7 +1,7 @@
 ---
 
 - name: yum | Install ntp server
-  yum:
+  ansible.builtin.yum:
     name: "{{ ntp_packages }}"
     state: present
   register: pkg_result
@@ -10,7 +10,7 @@
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp#migrating-to-chrony_using-chrony-to-configure-ntp
 - block:
     - name: configure chrony server
-      template:
+      ansible.builtin.template:
         src: chrony.conf
         dest: /etc/chrony.conf
         mode: '0644'
@@ -21,7 +21,7 @@
 
 - block:
     - name: configure ntp server
-      template:
+      ansible.builtin.template:
         src: ntp.conf
         dest: /etc/ntp.conf
         mode: '0644'
@@ -30,7 +30,7 @@
         - restart ntp
 
     - name: configure ntp daemon settings
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: /etc/sysconfig/ntpd
         regexp: "{{ item.re }}"
         line: "{{ item.l }}"
@@ -42,7 +42,7 @@
   when: ansible_distribution_major_version|int < 8
 
 - name: enable and start ntp service
-  service:
+  ansible.builtin.service:
     name: "{{ ntp_svc }}"
     state: started
     enabled: yes

@@ -1,12 +1,12 @@
 ---
 
 - name: apt | openntpd install
-  apt: name=openntpd state=present
+  ansible.builtin.apt: name=openntpd state=present
   register: pkg_result
   until: pkg_result is success
 
 - name: configure openntpd default
-  replace:
+  ansible.builtin.replace:
     dest: /etc/default/openntpd
     regexp: '^DAEMON_OPTS="(.*)"'
     replace: 'DAEMON_OPTS="-f /etc/openntpd/ntpd.conf {{ ntpclient_openntpd_opts }}"'
@@ -16,7 +16,7 @@
     - restart openntpd
 
 - name: configure openntpd
-  template:
+  ansible.builtin.template:
     src: ntpd.conf
     dest: /etc/openntpd/ntpd.conf
     mode: '0644'
