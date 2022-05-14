@@ -8,7 +8,8 @@
   until: pkg_result is success
 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp#migrating-to-chrony_using-chrony-to-configure-ntp
-- block:
+- name: Redhat8+
+  block:
     - name: configure chrony server
       ansible.builtin.template:
         src: chrony.conf
@@ -19,7 +20,8 @@
         - restart chronyd
   when: ansible_distribution_major_version|int >= 8
 
-- block:
+- name: Redhat7-
+  block:
     - name: configure ntp server
       ansible.builtin.template:
         src: ntp.conf
