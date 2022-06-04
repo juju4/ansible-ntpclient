@@ -50,7 +50,7 @@ ntpclient_servers:
 ## Continuous integration
 
 This role has a travis basic test (for github), more advanced with kitchen and also a Vagrantfile (test/vagrant).
-BUT it will NOT work in containers as adjtime needs priviliged (kernel) access which is not available in default configuration.
+BUT it will NOT work in containers as adjtime needs privileged (kernel) access which is not available in default configuration.
 
 Once you ensured all necessary roles are present, You can test with:
 ```
