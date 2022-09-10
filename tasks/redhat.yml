@@ -1,6 +1,6 @@
 ---
 
-- name: yum | Install ntp server
+- name: Redhat | Install ntp server
   ansible.builtin.yum:
     name: "{{ ntp_packages }}"
     state: present
@@ -10,28 +10,28 @@
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp#migrating-to-chrony_using-chrony-to-configure-ntp
 - name: Redhat8+
   block:
-    - name: configure chrony server
+    - name: Configure chrony server
       ansible.builtin.template:
         src: chrony.conf
         dest: /etc/chrony.conf
         mode: '0644'
         backup: yes
       notify:
-        - restart chronyd
-  when: ansible_distribution_major_version|int >= 8
+        - Restart chronyd
+  when: ansible_distribution_major_version | int >= 8
 
 - name: Redhat7-
   block:
-    - name: configure ntp server
+    - name: Configure ntp server
       ansible.builtin.template:
         src: ntp.conf
         dest: /etc/ntp.conf
         mode: '0644'
         backup: yes
       notify:
-        - restart ntp
+        - Restart ntp
 
-    - name: configure ntp daemon settings
+    - name: Configure ntp daemon settings
       ansible.builtin.lineinfile:
         dest: /etc/sysconfig/ntpd
         regexp: "{{ item.re }}"
@@ -40,10 +40,10 @@
       with_items:
         - { re: '^OPTIONS=.*', l: "OPTIONS='{{ ntpclient_opts | default('-g') }}'" }
       notify:
-        - restart ntp
-  when: ansible_distribution_major_version|int < 8
+        - Restart ntp
+  when: ansible_distribution_major_version | int < 8
 
-- name: enable and start ntp service
+- name: Enable and start ntp service
   ansible.builtin.service:
     name: "{{ ntp_svc }}"
     state: started

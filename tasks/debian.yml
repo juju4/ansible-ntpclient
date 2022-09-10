@@ -1,11 +1,11 @@
 ---
 
-- name: apt | openntpd install
+- name: Debian | openntpd install
   ansible.builtin.apt: name=openntpd state=present
   register: pkg_result
   until: pkg_result is success
 
-- name: configure openntpd default
+- name: Configure openntpd default
   ansible.builtin.replace:
     dest: /etc/default/openntpd
     regexp: '^DAEMON_OPTS="(.*)"'
@@ -13,9 +13,9 @@
     mode: '0644'
     backup: yes
   notify:
-    - restart openntpd
+    - Restart openntpd
 
-- name: configure openntpd
+- name: Configure openntpd
   ansible.builtin.template:
     src: ntpd.conf
     dest: /etc/openntpd/ntpd.conf
@@ -23,4 +23,4 @@
     backup: yes
     # validate: 'openntpd -f %s -n'
   notify:
-    - restart openntpd
+    - Restart openntpd
