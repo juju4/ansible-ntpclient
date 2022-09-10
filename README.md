@@ -13,7 +13,7 @@ It was tested on the following versions:
 
 ### Operating systems
 
-Tested with vagrant on Ubuntu 14.04, Kitchen test with trusty and centos7
+Tested on Ubuntu 18.04, 20.04 and 22.04.
 
 ## Example Playbook
 
