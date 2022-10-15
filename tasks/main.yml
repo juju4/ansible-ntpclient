@@ -6,13 +6,16 @@
   ansible.builtin.include_vars: "RedHat-{{ ansible_distribution_major_version }}.yml"
   when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '8'
 
-- import_tasks: debian.yml
+- name: Import debian
+  ansible.builtin.import_tasks: debian.yml
   when: ansible_os_family == "Debian"
-- import_tasks: redhat.yml
+- name: Import redhat
+  ansible.builtin.import_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
 - name: Warning
-  ansible.builtin.debug: msg="Warning! ntpclient in a container will not work/execute (adjtime not permitted)"
+  ansible.builtin.debug:
+    msg: "Warning! ntpclient in a container will not work/execute (adjtime not permitted)"
   when: >
     (ansible_virtualization_type is defined and
       (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")

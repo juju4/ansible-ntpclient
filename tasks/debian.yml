@@ -1,7 +1,9 @@
 ---
 
 - name: Debian | openntpd install
-  ansible.builtin.apt: name=openntpd state=present
+  ansible.builtin.apt:
+    name: openntpd
+    state: present
   register: pkg_result
   until: pkg_result is success
 

@@ -9,6 +9,7 @@
 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp#migrating-to-chrony_using-chrony-to-configure-ntp
 - name: Redhat8+
+  when: ansible_distribution_major_version | int >= 8
   block:
     - name: Configure chrony server
       ansible.builtin.template:
@@ -18,9 +19,9 @@
         backup: yes
       notify:
         - Restart chronyd
-  when: ansible_distribution_major_version | int >= 8
 
 - name: Redhat7-
+  when: ansible_distribution_major_version | int < 8
   block:
     - name: Configure ntp server
       ansible.builtin.template:
@@ -41,7 +42,6 @@
         - { re: '^OPTIONS=.*', l: "OPTIONS='{{ ntpclient_opts | default('-g') }}'" }
       notify:
         - Restart ntp
-  when: ansible_distribution_major_version | int < 8
 
 - name: Enable and start ntp service
   ansible.builtin.service:
