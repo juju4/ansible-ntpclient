@@ -1,7 +1,7 @@
 ---
 
 - name: Redhat | Install ntp server
-  ansible.builtin.yum:
+  ansible.builtin.dnf:
     name: "{{ ntp_packages }}"
     state: present
   register: pkg_result
