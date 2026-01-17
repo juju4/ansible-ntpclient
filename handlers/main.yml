@@ -35,3 +35,7 @@
     not (ansible_virtualization_type is defined and
           (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
         )
+
+- name: Enable timesyncd set-ntp
+  ansible.builtin.command:
+    cmd: timedatectl set-ntp true

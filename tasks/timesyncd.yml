@@ -10,7 +10,4 @@
     backup: true
   notify:
     - Restart timesyncd
-
-- name: Enable timesyncd set-ntp
-  ansible.builtin.command:
-    cmd: timedatectl set-ntp true
+    - Enable timesyncd set-ntp
