@@ -1,0 +1,16 @@
+---
+
+- name: Configure timesyncd
+  community.general.ini_file:
+    path: /etc/systemd/timesyncd.conf
+    section: Time
+    option: NTP
+    value: "{{ ntpclient_servers | join(' ') }}"
+    mode: '0644'
+    backup: true
+  notify:
+    - Restart timesyncd
+
+- name: Enable timesyncd set-ntp
+  ansible.builtin.command:
+    cmd: timedatectl set-ntp true

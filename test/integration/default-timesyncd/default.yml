@@ -1,0 +1,8 @@
+---
+
+- name: Test integration playbook
+  hosts: all
+  vars:
+    ntpclient_tool: 'timesyncd'
+  roles:
+    - juju4.ntpclient

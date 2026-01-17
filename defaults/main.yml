@@ -1,5 +1,9 @@
 ---
 
+ntpclient_tool: 'openntpd'
+# ntpclient_tool: 'ntpd'  # or chrony/redhat
+# ntpclient_tool: 'timesyncd'
+
 ## if not defined, will not listen
 # ntpclient_listen: *
 # ntpclient_listen: '127.0.0.1'
