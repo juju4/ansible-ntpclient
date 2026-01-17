@@ -1,5 +1,10 @@
 ---
 
+- name: Ensure timesyncd is present
+  ansible.builtin.package:
+    name: systemd-timesyncd
+    state: present
+
 - name: Configure timesyncd
   community.general.ini_file:
     path: /etc/systemd/timesyncd.conf
