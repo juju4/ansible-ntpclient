@@ -9,7 +9,7 @@
 
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp#migrating-to-chrony_using-chrony-to-configure-ntp
 - name: Redhat8+
-  when: ansible_distribution_major_version | int >= 8
+  when: ansible_facts['distribution_major_version'] | int >= 8
   block:
     - name: Configure chrony server
       ansible.builtin.template:
@@ -21,7 +21,7 @@
         - Restart chronyd
 
 - name: Redhat7-
-  when: ansible_distribution_major_version | int < 8
+  when: ansible_facts['distribution_major_version'] | int < 8
   block:
     - name: Configure ntp server
       ansible.builtin.template:
@@ -49,6 +49,6 @@
     state: started
     enabled: yes
   when: >
-    not (ansible_virtualization_type is defined and
-          (ansible_virtualization_type == "lxc" or ansible_virtualization_type == "docker")
+    not (ansible_facts['virtualization_type'] is defined and
+          (ansible_facts['virtualization_type'] == "lxc" or ansible_facts['virtualization_type'] == "docker")
         )
