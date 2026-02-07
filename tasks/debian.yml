@@ -17,6 +17,12 @@
   notify:
     - Restart openntpd
 
+- name: Import debian-apparmor
+  ansible.builtin.import_tasks: debian-apparmor.yml
+  when:
+    - (ansible_facts['distribution'] == 'Debian' and ansible_facts['distribution_major_version'] | int >= 13)
+    - ntpclient_ntpd_apparmor4_workaround | bool
+
 - name: Configure openntpd
   ansible.builtin.template:
     src: ntpd.conf

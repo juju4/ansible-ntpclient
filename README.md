@@ -71,7 +71,7 @@ $ vagrant ssh
 (task: enable and start ntp service)
 * role will not execute inside lxc as kernel is shared and ntp adjtime is not permitted
 http://blog.oddbit.com/2015/10/09/running-ntp-in-a-container/
-
+* ntpd issue with Debian 13+Proxmox9 due to Apparmor4. See <https://pve.proxmox.com/wiki/Roadmap#9.0-known-issues>, <https://forum.proxmox.com/threads/minor-apparmor-problem-with-tor.173419/>, <https://github.com/containerd/containerd/issues/12726>
 
 ## License
 

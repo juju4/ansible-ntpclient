@@ -35,3 +35,5 @@ ntpclient_opts: -g -i /var/lib/ntp
 # for openntpd
 ntpclient_openntpd_opts: ''
 # ntpclient_openntpd_opts: '-s'
+
+ntpclient_ntpd_apparmor4_workaround: false

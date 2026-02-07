@@ -1,0 +1,12 @@
+---
+
+- name: Workaround Apparmor ABI 4 changes
+  ansible.builtin.lineinfile:
+    path: /etc/apparmor.d/usr.sbin.ntpd
+    line: 'abi <abi/3.0>,'
+    insertafter: '^# vim:syntax=apparmor'
+    mode: '0644'
+    owner: root
+    group: root
+  notify:
+    - Reload apparmor ntpd
